@@ -1,0 +1,35 @@
+server:
+  port: 8081
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /miniblog
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: miniblog
+    rest:
+      basePath: /miniblog/data
+      defaultPageSize: 10
+  jackson:
+    date-format: yyyy-MM-dd hh:mm:ss
+    time-zone: GMT+8
+  http:
+    encoding:
+      force: true
+      charset: UTF-8
+      enabled: true
+jwt:
+  header: Authorization
+  secret: 5066725661951644368499682551129606905216005563324206247711089702263397995142490007081726015660473967910496492156305034877279825084013045607354052745720990
+  expiration: 36000000
+  tokenBearer: "Bearer "
+
+# 这是一个单用户系统
+miniblog:
+  admin:
+    username: username
+#   new BCryptPasswordEncoder().encode("password")
+    password: $2a$10$XBPMWPU62l8V3s1yjCUd6u3KcjWaqneCtRyZc1KGu7Uha6kD97fle
