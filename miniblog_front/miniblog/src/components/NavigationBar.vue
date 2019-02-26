@@ -20,7 +20,7 @@
                 <li v-if="isSearchable"><span class="search-icon  fa fa-search"></span>
                     <input id="search" type="text" class="search" v-model="searchKey" @input="searchMe">
                 </li>
-                <li><a href="https://github.com/Mr-medusa" target="_blank">View On Github</a></li>
+                <li><a href="https://github.com/Mr-medusa/miniblog_mongo" target="_blank">View On Github</a></li>
             </ul>
         </div>
     </div>
