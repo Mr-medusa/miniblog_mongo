@@ -20,7 +20,7 @@ Index 版：
 
 #
 
-服务端使用Java开发,权限框架使用Spring Securty
+
 
 #
 #
