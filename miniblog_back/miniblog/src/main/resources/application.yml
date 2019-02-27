@@ -12,6 +12,7 @@ spring:
       database: miniblog
       username: username
       password: password
+      authentication-database: admin
     rest:
       basePath: /miniblog/data
       defaultPageSize: 10
