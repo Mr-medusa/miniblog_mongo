@@ -40,7 +40,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PUT, "/miniblog/data/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PATCH, "/miniblog/data/**").hasRole("ADMIN")
                 .antMatchers(HttpMethod.DELETE, "/miniblog/data/**").hasRole("ADMIN")
-                .anyRequest().permitAll()
                 .and()
                 .logout().permitAll()
                 .and().csrf().disable();
