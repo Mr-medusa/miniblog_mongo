@@ -1,7 +1,9 @@
 package red.medusa.miniblog.pad.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -29,7 +31,8 @@ public class PadService {
 
         PadRoot folder = new PadRoot();
 
-        List<Pad> pads = mongoTemplate.findAll(Pad.class);
+        Query query = new Query();
+        List<Pad> pads = mongoTemplate.find(query.with(Sort.by("order")),Pad.class);
 
         if (pads.isEmpty()) {
             return folder;
@@ -62,33 +65,6 @@ public class PadService {
                 folder.getFolders().add(pad);
             }
         });
-
-        //排序
-        folder.getFolders().forEach(root -> {
-
-            Pad p;
-
-            LinkedList<Pad> queue = new LinkedList(Arrays.asList(root));
-
-            while (!queue.isEmpty()) {
-                p = queue.pop();
-
-                if (p.getChildren() != null && !p.getChildren().isEmpty()) {
-
-                    p.getChildren().sort(Comparator.comparing(e -> e.getOrder()));
-
-                    p.getChildren().forEach(child -> {
-
-                        if (child.getChildren() != null && !child.getChildren().isEmpty()) {
-                            queue.push(child);
-                        }
-
-                    });
-                }
-            }
-        });
-
-        folder.getFolders().sort(Comparator.comparing(e -> e.getOrder()));
 
         return folder;
     }
