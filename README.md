@@ -14,7 +14,7 @@
 
 #
 
-Index 版：
+IndexDB 版：
 
 ### https://mr-medusa.github.io/miniblog_indexdb/
 
